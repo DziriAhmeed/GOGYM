@@ -1,12 +1,14 @@
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { StyleSheet, Text, View, ImageBackground,TextInput,Button } from 'react-native';
+import SignUpScreen from './src/screens/SignUpScreen/SignUpScreen';
+import ForgetPasswordScreen from './src/screens/ForgetPasswordScreen/ForgetPasswordScreen';
+import Root from './src/navigation/Root';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Root/>
   );
 }
 
