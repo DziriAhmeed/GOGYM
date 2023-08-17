@@ -1,31 +1,37 @@
 import React from "react";
 import { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  ImageBackground,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import styles from "./loginScreenStyles";
+
+import { initializeApp } from "firebase/app";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import firebaseConfig from "../../../config";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
   const handleSignUp = () => {
     navigation.navigate("SignUp");
   };
   const handleForget = () => {
     navigation.navigate("Forget Password");
   };
-  const handleLogin=()=>{
-    if((email=="dziri@gmail.com")&&(password=="123456") ){
-       alert("welcome dziri")
-    }else{
-        alert("please try again")
-    }
-  }
+  const handleLogin = async () => {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Wlecome to Echri</Text>
