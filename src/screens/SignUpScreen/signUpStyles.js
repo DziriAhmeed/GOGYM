@@ -3,13 +3,13 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:'#fff',
     justifyContent:'center',
     alignItems:'center',
   },
   title:{
-    flex:1,
+    flex:2,
     marginTop:26,
-    fontSize: 36,
     justifyContent:'center',
   },
   form:{
@@ -18,13 +18,15 @@ const styles = StyleSheet.create({
     width:'100%'
   },
   input:{
+    flexDirection:'row',
     width:'80%',
       height:50,
       borderColor:'gray',
       borderRadius:12,
-      borderWidth:1,
+      borderBottomWidth:1,
       marginVertical:10,
       padding:10,
+      
   },
   createbutton:{
     width:'80%',

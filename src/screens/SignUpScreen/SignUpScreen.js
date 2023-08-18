@@ -1,14 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import styles from "./signUpStyles";
+import Ionicons from "@expo/vector-icons/Ionicons";
 const SignUpScreen = ({ navigation }) => {
   const [name, setName] = useState("");
   const [phonenumber, setPhoneNumber] = useState("");
@@ -52,55 +48,76 @@ const SignUpScreen = ({ navigation }) => {
       }
     }
   };
-
+  const [hidePass, setHidePass] = useState(true);
+  const [hidePass1, setHidePass1] = useState(true);
   return (
-      <KeyboardAwareScrollView>
-        <View style={styles.container}>
-          <Text style={styles.title}>Welcome to Echri</Text>
-          <View style={styles.form}>
-            <TextInput
-              placeholder="Name"
-              style={styles.input}
-              onChangeText={(text) => setName(text)}
-              value={name}
-            />
-            <TextInput
-              placeholder="Phone Number"
-              style={styles.input}
-              onChangeText={(text) => setPhoneNumber(text)}
-              value={phonenumber}
-            />
-            <TextInput
-              placeholder="E-mail"
-              style={styles.input}
-              onChangeText={(text) => setEmail(text)}
-              value={email}
-            />
+    <KeyboardAwareScrollView>
+      <View style={styles.container}>
+        <View style={styles.title}>
+          <Image
+            style={{height:150,width:150}}
+            source={require("../../../assets/signup.png")}
+          />
+        </View>
+        <View style={styles.form}>
+          <TextInput
+            placeholder="Name"
+            style={styles.input}
+            onChangeText={(text) => setName(text)}
+            value={name}
+          />
+          <TextInput
+            placeholder="Phone Number"
+            style={styles.input}
+            onChangeText={(text) => setPhoneNumber(text)}
+            value={phonenumber}
+          />
+          <TextInput
+            placeholder="E-mail"
+            style={styles.input}
+            onChangeText={(text) => setEmail(text)}
+            value={email}
+          />
+          <View style={styles.input}>
             <TextInput
               placeholder="Password"
-              style={styles.input}
               onChangeText={(text) => setPassword(text)}
               value={password}
+              secureTextEntry={hidePass ? true : false}
+              style={{ flex: 1 }}
             />
+            <Ionicons
+              name={hidePass ? "ios-eye-off-outline" : "ios-eye-outline"}
+              size={20}
+              onPress={() => setHidePass(!hidePass)}
+              style={{ paddingTop: 4 }}
+            />
+          </View>
+          <View style={styles.input}>
             <TextInput
               placeholder="Confirm Password"
-              style={styles.input}
               onChangeText={(text) => setConfirmPass(text)}
               value={confirmpass}
+              secureTextEntry={hidePass1 ? true : false}
+              style={{ flex: 1 }}
             />
-            <TouchableOpacity
-              style={styles.createbutton}
-              onPress={handleSignUp}
-            >
-              <Text style={{ color: "#FFFFFF" }}>Create Account</Text>
-            </TouchableOpacity>
-            {error !== "" && <Text style={styles.errorText}>{error}</Text>}
-            <TouchableOpacity onPress={goBack}>
-              <Text style={{ color: "#0094FF" }}>go back to login</Text>
-            </TouchableOpacity>
+            <Ionicons
+              name={hidePass ? "ios-eye-off-outline" : "ios-eye-outline"}
+              size={20}
+              onPress={() => setHidePass1(!hidePass1)}
+              style={{ paddingTop: 4 }}
+            />
           </View>
+          <TouchableOpacity style={styles.createbutton} onPress={handleSignUp}>
+            <Text style={{ color: "#FFFFFF" }}>Create Account</Text>
+          </TouchableOpacity>
+          {error !== "" && <Text style={styles.errorText}>{error}</Text>}
+          <TouchableOpacity onPress={goBack}>
+            <Text style={{ color: "#0094FF" }}>go back to login</Text>
+          </TouchableOpacity>
         </View>
-      </KeyboardAwareScrollView>
+      </View>
+    </KeyboardAwareScrollView>
   );
 };
 export default SignUpScreen;

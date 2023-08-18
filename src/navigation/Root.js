@@ -2,12 +2,13 @@ import * as React from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { NavigationContainer } from "@react-navigation/native";
 import AuthStack from "./AuthNavigationStack";
-import SignedInStack from "./SignedInStack";
+
 
 import { useState } from "react";
 import { useEffect } from "react";
 import firebaseConfig from "../../config";
 import { initializeApp } from "firebase/app";
+import MyTabs from "./SignedInTabs";
 export default function Root() {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
@@ -38,5 +39,5 @@ export default function Root() {
     );
   }else
 
-  return <NavigationContainer>{<SignedInStack />}</NavigationContainer>;
+  return <NavigationContainer>{<MyTabs />}</NavigationContainer>;
 }
