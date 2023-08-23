@@ -5,6 +5,8 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import styles from "./signUpStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/userslice/UserSlice";
 const SignUpScreen = ({ navigation }) => {
   const [name, setName] = useState("");
   const [phonenumber, setPhoneNumber] = useState("");
@@ -12,7 +14,7 @@ const SignUpScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [confirmpass, setConfirmPass] = useState("");
   const [error, setError] = useState();
-
+  const dispatch = useDispatch();
   const goBack = () => navigation.goBack();
   const handleSignUp = async () => {
     try {
@@ -26,6 +28,7 @@ const SignUpScreen = ({ navigation }) => {
         (userCredential) => {
           // Signed in
           const user = userCredential.user;
+          dispatch(setUser({name,email,phonenumber}))
           // ...
           navigation.navigate("Otp");
         }

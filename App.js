@@ -1,6 +1,6 @@
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
-
+import { Provider } from 'react-redux';
 import {
   StyleSheet,
   Text,
@@ -11,9 +11,12 @@ import {
 } from "react-native";
 
 import Root from "./src/navigation/Root";
+import { store } from "./src/redux/store";
 
 export default function App() {
-  return <Root />;
+  return (
+    <Provider store={store}><Root /></Provider>
+  );
 }
 
 const styles = StyleSheet.create({
