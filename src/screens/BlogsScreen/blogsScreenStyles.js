@@ -8,8 +8,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  homeheader: {
-    flexDirection: "row",
+  text: {
+    color: "#CCC7CD",
+    fontSize: 17,
   },
 });
 export default styles;

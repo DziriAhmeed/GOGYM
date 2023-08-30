@@ -7,6 +7,7 @@ import styles from "./signUpStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/userslice/UserSlice";
+
 const SignUpScreen = ({ navigation }) => {
   const [name, setName] = useState("");
   const [phonenumber, setPhoneNumber] = useState("");
@@ -68,18 +69,21 @@ const SignUpScreen = ({ navigation }) => {
             style={styles.input}
             onChangeText={(text) => setName(text)}
             value={name}
+            placeholderTextColor={'#CCC7CD'}
           />
           <TextInput
             placeholder="Phone Number"
             style={styles.input}
             onChangeText={(text) => setPhoneNumber(text)}
             value={phonenumber}
+            placeholderTextColor={'#CCC7CD'}
           />
           <TextInput
             placeholder="E-mail"
             style={styles.input}
             onChangeText={(text) => setEmail(text)}
             value={email}
+            placeholderTextColor={'#CCC7CD'}
           />
           <View style={styles.input}>
             <TextInput
@@ -87,7 +91,8 @@ const SignUpScreen = ({ navigation }) => {
               onChangeText={(text) => setPassword(text)}
               value={password}
               secureTextEntry={hidePass ? true : false}
-              style={{ flex: 1 }}
+              style={{ flex: 1,color:'#CCC7CD' }}
+              placeholderTextColor={'#CCC7CD'}
             />
             <Ionicons
               name={hidePass ? "ios-eye-off-outline" : "ios-eye-outline"}
@@ -102,7 +107,8 @@ const SignUpScreen = ({ navigation }) => {
               onChangeText={(text) => setConfirmPass(text)}
               value={confirmpass}
               secureTextEntry={hidePass1 ? true : false}
-              style={{ flex: 1 }}
+              style={{ flex: 1,color:'#CCC7CD' }}
+              placeholderTextColor={'#CCC7CD'}
             />
             <Ionicons
               name={hidePass ? "ios-eye-off-outline" : "ios-eye-outline"}

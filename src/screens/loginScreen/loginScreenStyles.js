@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#191418',
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
       borderBottomWidth:1,
       marginVertical:10,
       padding:10,
+      color:'#CCC7CD'
     },
     forgetpass:{
       width:'80%',
@@ -38,8 +39,8 @@ const styles = StyleSheet.create({
       flexDirection:'row',
       justifyContent:'center',
       alignItems:'center',
-      backgroundColor:'#0094FF',
-      borderColor:'#0094FF',
+      backgroundColor:'#F04444',
+      borderColor:'#F04444',
       borderWidth:1,
       borderRadius:12,
     },
