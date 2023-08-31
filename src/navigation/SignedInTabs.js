@@ -2,11 +2,11 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import ProfilScreen from "../screens/ProfilScreen/ProfilScreen";
-import LibraryScreen from "../screens/LibraryScreen/LibraryScreen";
 import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import Header from "../components/header/Header";
 import BlogsScreen from "../screens/BlogsScreen/BlogsScreen";
+import LibStack from "./LibraryStack";
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -40,18 +40,13 @@ function MyTabs() {
       />
       <Tab.Screen
         name="LibraryScreen"
-        component={LibraryScreen}
+        component={LibStack}
         options={{
           tabBarLabel: "Library",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="barbell-outline" size={size} color={color} />
           ),
-          headerTitle: () => <Header name="Library" />,
-          headerStyle: {
-            backgroundColor: "#191418",
-            height: 60,
-          },
-          headerShadowVisible: false,
+          headerShown: false,
         }}
       />
       <Tab.Screen

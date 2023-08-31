@@ -13,12 +13,14 @@ import styles from "./loginScreenStyles";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseConfig from "../../../config";
+import { GoogleAuthProvider } from "firebase/auth";
 import { AntDesign } from "@expo/vector-icons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/userslice/UserSlice";
 
 const LoginScreen = ({ navigation }) => {
+  const provider = new GoogleAuthProvider();
   const [email, setEmail] = useState("dziriahmed473@gmail.com");
   const [password, setPassword] = useState("123456");
   const [isLoading, setIsLoading] = useState(false);
@@ -53,6 +55,34 @@ const LoginScreen = ({ navigation }) => {
         const errorMessage = error.message;
       });
   };
+  // const handlegooglelog = async () => {
+  //   signInWithPopup(auth, provider)
+  //     .then((result) => {
+  //       // This gives you a Google Access Token. You can use it to access the Google API.
+  //       const credential = GoogleAuthProvider.credentialFromResult(result);
+  //       const token = credential.accessToken;
+  //       // The signed-in user info.
+  //       const user = result.user;
+  //       dispatch(
+  //         setUser({
+  //           email: user.email,
+  //           token: user.stsTokenManager.accessToken,
+  //         })
+  //       );
+  //       // IdP data available using getAdditionalUserInfo(result)
+  //       // ...
+  //     })
+  //     .catch((error) => {
+  //       // Handle Errors here.
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       // The email of the user's account used.
+  //       const email = error.customData.email;
+  //       // The AuthCredential type that was used.
+  //       const credential = GoogleAuthProvider.credentialFromError(error);
+  //       // ...
+  //     });
+  // };
   const [hidePass, setHidePass] = useState(true);
   return (
     <View style={styles.container}>
