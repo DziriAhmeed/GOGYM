@@ -21,7 +21,17 @@ function AuthStack() {
           },
         }}
       />
-      <Stack.Screen name="SignUp" component={SignUpScreen} />
+      <Stack.Screen
+        name="SignUp"
+        component={SignUpScreen}
+        options={{
+          headerTitle: () => <Header name="SignUp" />,
+          headerStyle: {
+            backgroundColor: "#191418",
+            height: 120,
+          },
+        }}
+      />
       <Stack.Screen name="Forget Password" component={ForgetPasswordScreen} />
       <Stack.Screen name="Otp" component={OtpScreen} />
     </Stack.Navigator>

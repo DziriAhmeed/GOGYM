@@ -9,10 +9,10 @@ import {
   TouchableOpacity,
   Dimensions,
 } from "react-native";
-import styles from "./chestExercicesStyles";
-import CHEST_EXERCICES from "../../assets/exercises/chest";
+import styles from "./shouldersExercicesStyles";
+import SHOULDERS_EXERCICES from "../../assets/exercises/shoulders";
 const { width, height } = Dimensions.get("window");
-export const ChestExercises = () => {
+export const ShouldersExercises = () => {
   const renderLibraryItem = ({ item, index }) => {
     return (
       <TouchableOpacity key={item.id} style={{ borderRadius: 5 }}>
@@ -41,7 +41,7 @@ export const ChestExercises = () => {
             style={{
               justifyContent: "flex-end",
               borderRadius: 5,
-              width: width * 0.38,
+              width: width * 0.4,
               height: height * 0.25,
             }}
           />
@@ -82,7 +82,7 @@ export const ChestExercises = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={CHEST_EXERCICES}
+        data={SHOULDERS_EXERCICES}
         contentContainerStyle={{ gap: 5 }}
         renderItem={renderLibraryItem}
       />

@@ -21,8 +21,8 @@ import { setUser } from "../../redux/userslice/UserSlice";
 
 const LoginScreen = ({ navigation }) => {
   const provider = new GoogleAuthProvider();
-  const [email, setEmail] = useState("dziriahmed473@gmail.com");
-  const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const app = initializeApp(firebaseConfig);

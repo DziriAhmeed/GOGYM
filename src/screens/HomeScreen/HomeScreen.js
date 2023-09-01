@@ -1,6 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  Dimensions,
+  ScrollView,
+  Linking,
+} from "react-native";
 import styles from "./homeScreenStyles";
 import { getAuth } from "firebase/auth";
 import { useSelector } from "react-redux";
@@ -9,14 +17,17 @@ import "react-native-gesture-handler";
 import CircularProgress from "react-native-circular-progress-indicator";
 import { Ionicons } from "@expo/vector-icons";
 import EXERCICES from "../../assets/exercises/exercises";
+const { width, height } = Dimensions.get("window");
 
 const HomeScreen = () => {
+  const openURL = (url) => {
+    Linking.openURL(url).catch((err) =>
+      console.error("An error occurred", err)
+    );
+  };
   const [PedometerAvailability, setPedometerAvailability] = useState("");
   const [stepCount, updateStepCount] = useState(0);
   useEffect(() => {
-    console.log(
-      EXERCICES.filter((item, index) => item.primaryMuscles[0] === "abdominals")
-    );
     subscribe();
   }),
     (subscribe = () => {
@@ -48,6 +59,7 @@ const HomeScreen = () => {
 
       <View style={styles.firstsection}>
         <View>
+          <Text style={styles.text}>Welcome Champ !!</Text>
           <Text style={styles.text}>{user.name}</Text>
           <Text style={styles.text}>{user.email}</Text>
         </View>
@@ -90,8 +102,8 @@ const HomeScreen = () => {
           <Text style={{ color: "#f04444" }}>{KcalBurnt} /kcal</Text>
         </View>
       </View>
-      <View style={{ marginTop: 20 }}>
-        <Text style={styles.text}>Suggested Programs</Text>
+      <View style={{ marginTop: 20, flex: 1 }}>
+        <Text style={styles.text}>Suggested Blogs</Text>
         <View
           style={{
             marginTop: 10,
@@ -100,6 +112,138 @@ const HomeScreen = () => {
             opacity: 0.4,
           }}
         />
+        <ScrollView>
+          <TouchableOpacity
+            style={{
+              borderWidth: 1,
+              borderColor: "#252028",
+              backgroundColor: "#252028",
+              width: width * 0.8,
+              height: height * 0.25,
+              flexDirection: "row",
+              borderRadius: 5,
+              flex: 1,
+              marginHorizontal: 5,
+              marginVertical: 5,
+              elevation: 2,
+              shadowColor: "#D3D3D3",
+              shadowOffset: { width: 0, height: 5 },
+              shadowOpacity: 0.4,
+              shadowRadius: 5,
+            }}
+            onPress={() => {
+              openURL(
+                "https://www.bodybuilding.com/content/arms-workout-for-women-a-girls-guide-to-guns.htmlhttps://www.moodplan.net/skilldesmonats"
+              );
+            }}
+          >
+            <Image
+              style={{
+                justifyContent: "flex-end",
+                borderRadius: 5,
+                width: width * 0.4,
+                height: height * 0.25,
+              }}
+              source={require("../../../assets/blogs/arm-training-for-women-header-400x225.jpg")}
+            />
+            <View
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                flex: 1,
+                padding: 5,
+              }}
+            >
+              <Text
+                style={{
+                  alignSelf: "flex-start",
+                  color: "white",
+                  fontWeight: "bold",
+                }}
+              >
+                Arm Workouts for Women: Build Shape, Size, and Strength!
+              </Text>
+              <Text
+                style={{
+                  color: "white",
+
+                  fontSize: 12,
+                  alignSelf: "flex-start",
+                }}
+              >
+                Girls need curls, too! If you want to really rock that tank top
+                at the gym or.....
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <View
+            style={{
+              borderWidth: 1,
+              borderColor: "#B9B1BC",
+              marginHorizontal: 10,
+              marginVertical: 20,
+              opacity: 0.4,
+            }}
+          ></View>
+          <TouchableOpacity
+            style={{
+              borderWidth: 1,
+              borderColor: "#252028",
+              backgroundColor: "#252028",
+              width: width * 0.8,
+              height: height * 0.25,
+              flexDirection: "row",
+              borderRadius: 5,
+              flex: 1,
+              marginHorizontal: 5,
+              marginVertical: 5,
+              elevation: 2,
+              shadowColor: "#D3D3D3",
+              shadowOffset: { width: 0, height: 5 },
+              shadowOpacity: 0.4,
+              shadowRadius: 5,
+            }}
+          >
+            <Image
+              style={{
+                justifyContent: "flex-end",
+                borderRadius: 5,
+                width: width * 0.4,
+                height: height * 0.25,
+              }}
+              source={require("../../../assets/blogs/benefits-of-heart-rating-training-by-goals-header-400x225.jpg")}
+            />
+            <View
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                flex: 1,
+                padding: 5,
+              }}
+            >
+              <Text
+                style={{
+                  alignSelf: "flex-start",
+                  color: "white",
+                  fontWeight: "bold",
+                }}
+              >
+                Benefits of Heart Rate Training By Goals
+              </Text>
+              <Text
+                style={{
+                  color: "white",
+
+                  fontSize: 12,
+                  alignSelf: "flex-start",
+                }}
+              >
+                Why tracking your heart rate could be an important piece to
+                reaching your goals.....
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
     </View>
   );

@@ -29,9 +29,10 @@ const SignUpScreen = ({ navigation }) => {
         (userCredential) => {
           // Signed in
           const user = userCredential.user;
-          dispatch(setUser({name,email,phonenumber}))
+          dispatch(setUser({ name, email, phonenumber }));
           // ...
-          navigation.navigate("Otp");
+          navigation.navigate("Login");
+          alert("your account has been created");
         }
       );
     } catch (error) {
@@ -59,7 +60,7 @@ const SignUpScreen = ({ navigation }) => {
       <View style={styles.container}>
         <View style={styles.title}>
           <Image
-            style={{height:150,width:150}}
+            style={{ height: 150, width: 150 }}
             source={require("../../../assets/signup.png")}
           />
         </View>
@@ -69,21 +70,21 @@ const SignUpScreen = ({ navigation }) => {
             style={styles.input}
             onChangeText={(text) => setName(text)}
             value={name}
-            placeholderTextColor={'#CCC7CD'}
+            placeholderTextColor={"#CCC7CD"}
           />
           <TextInput
             placeholder="Phone Number"
             style={styles.input}
             onChangeText={(text) => setPhoneNumber(text)}
             value={phonenumber}
-            placeholderTextColor={'#CCC7CD'}
+            placeholderTextColor={"#CCC7CD"}
           />
           <TextInput
             placeholder="E-mail"
             style={styles.input}
             onChangeText={(text) => setEmail(text)}
             value={email}
-            placeholderTextColor={'#CCC7CD'}
+            placeholderTextColor={"#CCC7CD"}
           />
           <View style={styles.input}>
             <TextInput
@@ -91,14 +92,14 @@ const SignUpScreen = ({ navigation }) => {
               onChangeText={(text) => setPassword(text)}
               value={password}
               secureTextEntry={hidePass ? true : false}
-              style={{ flex: 1,color:'#CCC7CD' }}
-              placeholderTextColor={'#CCC7CD'}
+              style={{ flex: 1, color: "#CCC7CD" }}
+              placeholderTextColor={"#CCC7CD"}
             />
             <Ionicons
               name={hidePass ? "ios-eye-off-outline" : "ios-eye-outline"}
               size={20}
               onPress={() => setHidePass(!hidePass)}
-              style={{ paddingTop: 4 }}
+              style={{ paddingTop: 4, color: "#CCC7CD" }}
             />
           </View>
           <View style={styles.input}>
@@ -107,14 +108,14 @@ const SignUpScreen = ({ navigation }) => {
               onChangeText={(text) => setConfirmPass(text)}
               value={confirmpass}
               secureTextEntry={hidePass1 ? true : false}
-              style={{ flex: 1,color:'#CCC7CD' }}
-              placeholderTextColor={'#CCC7CD'}
+              style={{ flex: 1, color: "#CCC7CD" }}
+              placeholderTextColor={"#CCC7CD"}
             />
             <Ionicons
-              name={hidePass ? "ios-eye-off-outline" : "ios-eye-outline"}
+              name={hidePass1 ? "ios-eye-off-outline" : "ios-eye-outline"}
               size={20}
               onPress={() => setHidePass1(!hidePass1)}
-              style={{ paddingTop: 4 }}
+              style={{ paddingTop: 4, color: "#CCC7CD" }}
             />
           </View>
           <TouchableOpacity style={styles.createbutton} onPress={handleSignUp}>

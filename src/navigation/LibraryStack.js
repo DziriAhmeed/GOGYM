@@ -2,7 +2,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LibraryScreen from "../screens/LibraryScreen/LibraryScreen";
 import { ChestExercises } from "../screens/ChestExercies/ChestExercices";
 import { BicepsExercises } from "../screens/BicepsExercices/BicepsExercices";
-import { AbsExercices } from "../screens/AbsScreen/AbsExercices";
+import { AbsExercices } from "../screens/AbsExercices/AbsExercices";
+import { ShouldersExercises } from "../screens/ShouldersExercices/ShouldersExercices";
 const Stack = createNativeStackNavigator();
 
 function LibStack() {
@@ -55,6 +56,21 @@ function LibStack() {
       <Stack.Screen
         name="ABS"
         component={AbsExercices}
+        options={{
+          headerStyle: {
+            backgroundColor: "#191418",
+          },
+          headerTitleStyle: {
+            fontWeight: "500",
+            fontSize: 20,
+            color: "white",
+          },
+          headerBackTitleStyle: {},
+        }}
+      />
+      <Stack.Screen
+        name="shoulders"
+        component={ShouldersExercises}
         options={{
           headerStyle: {
             backgroundColor: "#191418",
